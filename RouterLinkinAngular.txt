@@ -1,0 +1,60 @@
+app.component.html
+
+<div>
+  <h1>Welcome to {{ title }}</h1>
+  <nav>
+   <a routerLink="/">Back to Home</a>
+    <a routerLink="/about">About</a>
+  </nav>
+  <router-outlet></router-outlet>
+ <!-- This will display the routed component -->
+</div>
+
+-------------------------------------
+
+app.component.ts
+
+
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router'; // Import RouterModule
+import { AboutComponent } from '../about/about.component';
+
+@Component({
+  standalone: true, // Mark this component as standalone
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  imports: [RouterModule,AboutComponent], // Import RouterModule here
+})
+export class AppComponent {
+  title = 'first'; // Your title
+}
+
+-------------------------------------
+
+app.routes.ts
+
+import { Routes } from '@angular/router';
+
+import { AboutComponent } from '../about/about.component'; // Adjust path to match your structure
+
+export const routes: Routes = [
+   // Default route to AppComponent
+  { path: 'about', component: AboutComponent }, // Route to AboutComponent
+];
+
+
+
+-------------------------------------
+about.component.html
+
+<div>
+    <h2>{{ title }}</h2>
+    <p>This is the About component.</p>
+    
+    <!-- Back to Home link -->
+    <a routerLink="/">Back to Home</a>
+  </div>
+
+
+  
